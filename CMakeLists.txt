@@ -3,4 +3,7 @@ project(StoreManager)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(StoreManager main.cpp)
+add_executable(StoreManager main.cpp
+        entity/Item.cpp
+        entity/Item.h
+)
