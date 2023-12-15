@@ -1,11 +1,9 @@
-//
-// Created by Bastian Prado on 10/12/23.
-//
-
 #ifndef STOREMANAGER_ITEM_H
 #define STOREMANAGER_ITEM_H
 
 #include <string>
+
+// .h -> class declaration
 
 using namespace std;
 
@@ -20,11 +18,7 @@ public:
     // Empty constructor
     Item();
     //Parametrized constructor
-    Item(string name, float price, string description){
-        this->name = name;
-        this->price = price;
-        this->description = description;
-    }
+    Item(string name, float price, string description);
 
     string getId() const;
     void setId(string id);
