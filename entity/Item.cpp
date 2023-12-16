@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Item.h"
 
 // .cpp -> class definition
@@ -48,5 +49,11 @@ string Item::getDescription() const{
 
 void Item::setDescription(string newDescription){
     this->description = newDescription;
+}
+
+void Item::showItemInfo(){
+    cout << "Name: " << this->name << endl;
+    cout << "Price: " << this->price << endl;
+    cout << "Description: " << this->description << endl;
 }
 

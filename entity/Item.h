@@ -32,6 +32,8 @@ public:
     string getDescription() const;
     void setDescription(string description);
 
+    void showItemInfo();
+
 };
 
 
