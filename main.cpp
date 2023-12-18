@@ -1,6 +1,7 @@
 #include <iostream>
 #include <list>
 #include "entity/Item/Item.h"
+#include "entity/ShoppingCart/ShoppingCart.h"
 
 using namespace std;
 
@@ -9,11 +10,12 @@ int main() {
     Item fridge("Fridge",35.5,"Brand new fridge");
     Item oven("Oven",20.0,"Oven");
     Item lamp("Lamp",5.0,"Lamp");
-    list<Item> shoppingCart = {woodenChair,fridge,oven,lamp};
-
-    for (Item item : shoppingCart) {
-        item.showItemInfo();
-        cout << "-----------" << endl;
-    }
+    list<Item> items = {woodenChair,fridge,oven,lamp};
+    ShoppingCart shoppingCart;
+    shoppingCart.addMultipleItems(items);
+    shoppingCart.displayItemsInfo();
+    cout << "Shopping cart initial size: " << shoppingCart.numberOfItemsInCart() << endl;
+    shoppingCart.clearShoppingCart();
+    cout << "Shopping cart final size: " << shoppingCart.numberOfItemsInCart() << endl;
     return 0;
 }

@@ -20,7 +20,7 @@ public:
     void addMultipleItems(list<Item> toBeAdded);
     void removeItem(string itemName);
     void clearShoppingCart();
-    int numberOfItemsInCart();
+    size_t numberOfItemsInCart();
 
 };
 
