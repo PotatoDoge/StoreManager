@@ -32,3 +32,13 @@ void ShoppingCart::clearShoppingCart(){
 size_t ShoppingCart::numberOfItemsInCart(){
     return this->itemsInCart.size();
 }
+
+double ShoppingCart::checkoutAndPay(){
+    double receipt = 0;
+    for(Item item: this->itemsInCart){
+        receipt+= item.getPrice();
+    }
+    cout << "The total is: $" << receipt << endl;
+    itemsInCart.clear();
+    cout << "Your shopping cart is now empty";
+}

@@ -15,6 +15,7 @@ int main() {
     shoppingCart.addMultipleItems(items);
     shoppingCart.displayItemsInfo();
     cout << "Shopping cart initial size: " << shoppingCart.numberOfItemsInCart() << endl;
+    shoppingCart.checkoutAndPay();
     shoppingCart.clearShoppingCart();
     cout << "Shopping cart final size: " << shoppingCart.numberOfItemsInCart() << endl;
     return 0;
