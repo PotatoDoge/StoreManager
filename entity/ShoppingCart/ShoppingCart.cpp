@@ -33,7 +33,7 @@ size_t ShoppingCart::numberOfItemsInCart(){
     return this->itemsInCart.size();
 }
 
-double ShoppingCart::checkoutAndPay(){
+void ShoppingCart::checkoutAndPay(){
     double receipt = 0;
     for(Item item: this->itemsInCart){
         receipt+= item.getPrice();

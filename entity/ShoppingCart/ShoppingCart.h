@@ -21,7 +21,7 @@ public:
     void removeItem(string itemName);
     void clearShoppingCart();
     size_t numberOfItemsInCart();
-    double checkoutAndPay();
+    void checkoutAndPay();
 
 };
 

@@ -8,4 +8,6 @@ add_executable(StoreManager main.cpp
         entity/Item/Item.h
         entity/ShoppingCart/ShoppingCart.cpp
         entity/ShoppingCart/ShoppingCart.h
+        engine/AppEngine.cpp
+        engine/AppEngine.h
 )
