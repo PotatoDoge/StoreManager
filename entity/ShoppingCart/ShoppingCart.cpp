@@ -6,6 +6,10 @@ ShoppingCart::ShoppingCart() {
 }
 
 void ShoppingCart::displayItemsInfo(){
+    if(this->itemsInCart.empty()){
+        cout << "No items in cart!" << endl;
+        return;
+    }
     for (Item item : this->itemsInCart) {
         item.showItemInfo();
         cout << "-----------" << endl;
@@ -35,6 +39,10 @@ size_t ShoppingCart::numberOfItemsInCart(){
 
 void ShoppingCart::checkoutAndPay(){
     double receipt = 0;
+    if(this->itemsInCart.empty()){
+        cout << "No items in cart!" << endl;
+        return;
+    }
     for(Item item: this->itemsInCart){
         receipt+= item.getPrice();
     }
