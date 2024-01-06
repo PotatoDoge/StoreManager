@@ -7,6 +7,7 @@
 #include <list>
 #include "../entity/Item/Item.h"
 #include "../entity/ShoppingCart/ShoppingCart.h"
+#include "../entity/OrganicItem/OrganicItem.h"
 
 using namespace std;
 
@@ -33,8 +34,27 @@ int showMenu(){
     }
 }
 
+list<Item> loadStoreItems(){
+    list<Item> storeItems;
+    //Organic
+    OrganicItem apple("Apple",1.5,"Price is per unit", "25/01/2023",0.5, "red");
+    OrganicItem pineapple("Pineapple",3.5,"Price is per unit", "27/01/2023",1.5, "yellow");
+    OrganicItem blueberry("Blueberry",0.3,"Price is per unit", "25/01/2023",0.1, "blue");
+    OrganicItem cucumber("Cucumber",1.2,"Price is per unit", "30/01/2023",1.3, "green");
+    OrganicItem banana("Yellow",2.0,"Price is per unit", "25/02/2023",1.0, "yellow");
+
+    //add items to list
+    storeItems.push_front(apple);
+    storeItems.push_front(pineapple);
+    storeItems.push_front(blueberry);
+    storeItems.push_front(cucumber);
+    storeItems.push_front(banana);
+    return storeItems;
+}
+
 void AppEngine::runApp() {
     ShoppingCart shoppingCart;
+    list<Item> storeItems = loadStoreItems();
     bool shopping = true;
     while(shopping){
         int option = showMenu();
