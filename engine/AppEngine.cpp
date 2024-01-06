@@ -28,7 +28,7 @@ int showMenu(){
     // validate input
     while (true){
         cin >> option;
-        if (std::cin.fail()) {
+        if (cin.fail()) {
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             cout << "Not a valid input, please enter an option from the menu" << endl;
@@ -73,6 +73,11 @@ list<Item> loadStoreItems(){
     return storeItems;
 }
 
+/**
+ * Generate a map to optimize item search <id, item>
+ * @param availableItem items
+ * @return map
+ */
 map<int, Item> generateAvailableItemsMap(list<Item> availableItem){
      map<int, Item> itemsMap;
      for(Item item: availableItem){
@@ -89,19 +94,51 @@ void displayAvailableItems(list<Item> storeItems){
     }
 }
 
+Item addItemToCart(map<int,Item> items){
+    int code;
+    cout << "Input the code of the item to be added" << endl;
+    cin >> code;
+
+    if(cin.fail()){
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "Not a valid input" << endl;
+        return Item(0);
+    }
+
+    auto foundItem = items.find(code);
+    if(foundItem != items.end()){
+        return foundItem->second;
+    }
+
+    cout << "Item not found with that code" << endl;
+    return Item(0);
+
+}
+
 void AppEngine::runApp() {
-    ShoppingCart shoppingCart;
-    list<Item> storeItems = loadStoreItems();
-    map<int, Item> items = generateAvailableItemsMap(storeItems);
+
+    ShoppingCart shoppingCart; // where items will be added
+    list<Item> storeItems = loadStoreItems(); // generate available items
+    map<int, Item> items = generateAvailableItemsMap(storeItems); // create map for a more efficient search
+    Item selectedItem; // selected item to be added
     bool shopping = true;
+
     while(shopping){
         int option = showMenu();
         switch(option) {
             case 1:
                 // Show items
                 displayAvailableItems(storeItems);
+                break;
             case 2:
                 // Add item
+                selectedItem = addItemToCart(items);
+                if(selectedItem.getId() == 0){
+                    break;
+                }
+                shoppingCart.addItem(selectedItem);
+                cout << selectedItem.getName() << " added successfully" <<endl;
                 break;
             case 3:
                 // Remove item

@@ -20,6 +20,10 @@ public:
 
     // Empty constructor
     Item();
+
+    // Constructor to handle errors
+    Item(int id);
+
     //Parametrized constructor
     Item(string name, float price, string description);
 

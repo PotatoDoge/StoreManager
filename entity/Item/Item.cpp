@@ -16,6 +16,10 @@ Item::Item(){
     this->description = "";
 }
 
+Item::Item(int id) {
+    this->id = id;
+}
+
 Item::Item(string name, float price, string description ){
     this->id = this->generateRandomId();
     this->name = name;
