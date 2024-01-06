@@ -8,6 +8,7 @@
 #include "../entity/Item/Item.h"
 #include "../entity/ShoppingCart/ShoppingCart.h"
 #include "../entity/OrganicItem/OrganicItem.h"
+#include "../entity/CannedItem/CannedItem.h"
 
 using namespace std;
 
@@ -43,12 +44,18 @@ list<Item> loadStoreItems(){
     OrganicItem cucumber("Cucumber",1.2,"Price is per unit", "30/01/2023",1.3, "green");
     OrganicItem banana("Yellow",2.0,"Price is per unit", "25/02/2023",1.0, "yellow");
 
+    //Canned
+    CannedItem beans("Beans",3.0, "Can of beans", "Aluminium", "GenericBeansCo");
+    CannedItem corn("Corn",1.4,"Canned corn","Steel","GenericCornCo");
+
     //add items to list
     storeItems.push_front(apple);
     storeItems.push_front(pineapple);
     storeItems.push_front(blueberry);
     storeItems.push_front(cucumber);
     storeItems.push_front(banana);
+    storeItems.push_front(beans);
+    storeItems.push_front(corn);
     return storeItems;
 }
 

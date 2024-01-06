@@ -14,4 +14,6 @@ add_executable(StoreManager main.cpp
         entity/OrganicItem/OrganicItem.h
         entity/CannedItem/CannedItem.cpp
         entity/CannedItem/CannedItem.h
+        entity/ClothingItem/ClothingItem.cpp
+        entity/ClothingItem/ClothingItem.h
 )
