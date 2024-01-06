@@ -14,6 +14,8 @@
 
 using namespace std;
 
+ShoppingCart shoppingCart; // where items will be added
+
 int showMenu(){
 
     int option;
@@ -21,8 +23,8 @@ int showMenu(){
     cout << "Menu:" << endl;
     cout << "1)Show available items" << endl;
     cout << "2)Add item to cart" << endl;
-    cout << "3)Remove item to cart" << endl;
-    cout << "4)Show items" << endl;
+    cout << "3)Remove item from cart" << endl;
+    cout << "4)Show items in shopping cart" << endl;
     cout << "5)Pay and checkout" << endl;
     cout << "6)Exit" << endl;
     cout << "---------------" <<endl;
@@ -50,7 +52,7 @@ list<Item> loadStoreItems(){
     OrganicItem pineapple("Pineapple",3.5,"Price is per unit", "27/01/2023",1.5, "yellow");
     OrganicItem blueberry("Blueberry",0.3,"Price is per unit", "25/01/2023",0.1, "blue");
     OrganicItem cucumber("Cucumber",1.2,"Price is per unit", "30/01/2023",1.3, "green");
-    OrganicItem banana("Yellow",2.0,"Price is per unit", "25/02/2023",1.0, "yellow");
+    OrganicItem banana("Banana",2.0,"Price is per unit", "25/02/2023",1.0, "yellow");
 
     //Canned
     CannedItem beans("Beans",3.0, "Can of beans", "Aluminium", "GenericBeansCo");
@@ -118,12 +120,30 @@ Item addItemToCart(map<int,Item> items){
 
 }
 
+int itemToBeRemoved(){
+
+    cin.clear(); // cleans previous input
+    int code;
+    cout << "Input the code of the item to be removed" << endl;
+    cin >> code;
+
+    if(cin.fail()){
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "Not a valid input" << endl;
+        return 0;
+    }
+
+    return code;
+
+}
+
 void AppEngine::runApp() {
 
-    ShoppingCart shoppingCart; // where items will be added
     list<Item> storeItems = loadStoreItems(); // generate available items
     map<int, Item> items = generateAvailableItemsMap(storeItems); // create map for a more efficient search
     Item selectedItem; // selected item to be added
+    int toBeRemoved;
     bool shopping = true;
 
     while(shopping){
@@ -144,6 +164,11 @@ void AppEngine::runApp() {
                 break;
             case 3:
                 // Remove item
+                toBeRemoved = itemToBeRemoved();
+                if(toBeRemoved == 0){
+                    break;
+                }
+                shoppingCart.removeItem(toBeRemoved);
                 break;
             case 4:
                 //Show items

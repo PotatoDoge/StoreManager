@@ -24,6 +24,13 @@ void ShoppingCart::addItem(Item item){
 }
 
 void ShoppingCart::removeItem(int itemId){
+    auto foundItem = this->itemsInCart.find(itemId);
+    if(foundItem != this->itemsInCart.end()){
+        this->itemsInCart.erase(foundItem->first);
+        cout << "Item removed successfully" << endl;
+        return;
+    }
+    cout << "No item was found with that code" << endl;
 }
 
 void ShoppingCart::clearShoppingCart(){
