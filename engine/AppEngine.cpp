@@ -78,7 +78,7 @@ list<Item> loadStoreItems(){
 }
 
 /**
- * Generate a map to optimize item search <id, item>
+ * Generates a map to optimize item search <id, item>
  * @param availableItem items
  * @return map
  */
@@ -138,12 +138,15 @@ int itemToBeRemoved(){
 
 }
 
+/**
+ * Runs the main flow of the app
+ */
 void AppEngine::runApp() {
 
     list<Item> storeItems = loadStoreItems(); // generate available items
     map<int, Item> items = generateAvailableItemsMap(storeItems); // create map for a more efficient search
     Item selectedItem; // selected item to be added
-    int toBeRemoved;
+    int toBeRemoved; // item code to be removed form shopping cart
     bool shopping = true;
 
     while(shopping){
