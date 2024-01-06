@@ -9,6 +9,7 @@
 #include "../entity/ShoppingCart/ShoppingCart.h"
 #include "../entity/OrganicItem/OrganicItem.h"
 #include "../entity/CannedItem/CannedItem.h"
+#include "../entity/ClothingItem/ClothingItem.h"
 
 using namespace std;
 
@@ -36,7 +37,10 @@ int showMenu(){
 }
 
 list<Item> loadStoreItems(){
+
+    //Declare
     list<Item> storeItems;
+
     //Organic
     OrganicItem apple("Apple",1.5,"Price is per unit", "25/01/2023",0.5, "red");
     OrganicItem pineapple("Pineapple",3.5,"Price is per unit", "27/01/2023",1.5, "yellow");
@@ -48,6 +52,11 @@ list<Item> loadStoreItems(){
     CannedItem beans("Beans",3.0, "Can of beans", "Aluminium", "GenericBeansCo");
     CannedItem corn("Corn",1.4,"Canned corn","Steel","GenericCornCo");
 
+    //Clothes
+    ClothingItem shirt("Shirt",20.5,"Fancy shirt",'M',"Green","Cotton");
+    ClothingItem jeans("Jeans",7.5,"Pair of jeans",'4',"Blue","Denim");
+    ClothingItem coat("Coat",30,"Fancy coat",'L',"Brown","Wool");
+
     //add items to list
     storeItems.push_front(apple);
     storeItems.push_front(pineapple);
@@ -56,6 +65,9 @@ list<Item> loadStoreItems(){
     storeItems.push_front(banana);
     storeItems.push_front(beans);
     storeItems.push_front(corn);
+    storeItems.push_front(shirt);
+    storeItems.push_front(jeans);
+    storeItems.push_front(coat);
     return storeItems;
 }
 
