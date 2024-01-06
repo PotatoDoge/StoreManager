@@ -2,7 +2,7 @@
 #include "ShoppingCart.h"
 
 ShoppingCart::ShoppingCart() {
-    this->itemsInCart = list<Item>();
+    this->itemsInCart = map<int,Item>();
 }
 
 void ShoppingCart::displayItemsInfo(){
@@ -10,25 +10,22 @@ void ShoppingCart::displayItemsInfo(){
         cout << "No items in cart!" << endl;
         return;
     }
-    for (Item item : this->itemsInCart) {
-        item.showItemInfo();
+    cout << "Items in cart:" << endl;
+    for (auto item : this->itemsInCart) {
+        cout << "-----------" << endl;
+        item.second.showItemInfo();
         cout << "-----------" << endl;
     }
 }
 
 
 void ShoppingCart::addItem(Item item){
-    this->itemsInCart.push_front(item);
+    this->itemsInCart.insert(pair(item.getId(), item));
 }
 
-void ShoppingCart::addMultipleItems(list<Item> toBeAdded){
-    for(Item item: toBeAdded){
-        this->itemsInCart.push_front(item);
-    }
+void ShoppingCart::removeItem(int itemId){
 }
 
-void ShoppingCart::removeItem(string itemName){
-}
 void ShoppingCart::clearShoppingCart(){
     this->itemsInCart.clear();
 }
@@ -43,10 +40,10 @@ void ShoppingCart::checkoutAndPay(){
         cout << "No items in cart!" << endl;
         return;
     }
-    for(Item item: this->itemsInCart){
-        receipt+= item.getPrice();
+    for(auto item: this->itemsInCart){
+        receipt+= item.second.getPrice();
     }
     cout << "The total is: $" << receipt << endl;
     itemsInCart.clear();
-    cout << "Your shopping cart is now empty";
+    cout << "Your shopping cart is now empty" << endl;
 }

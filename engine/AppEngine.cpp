@@ -17,6 +17,7 @@ using namespace std;
 int showMenu(){
 
     int option;
+    cout << "---------------" <<endl;
     cout << "Menu:" << endl;
     cout << "1)Show available items" << endl;
     cout << "2)Add item to cart" << endl;
@@ -24,6 +25,7 @@ int showMenu(){
     cout << "4)Show items" << endl;
     cout << "5)Pay and checkout" << endl;
     cout << "6)Exit" << endl;
+    cout << "---------------" <<endl;
 
     // validate input
     while (true){

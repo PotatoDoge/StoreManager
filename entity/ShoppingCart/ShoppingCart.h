@@ -7,18 +7,18 @@
 
 #include "../Item/Item.h"
 #include <list>
+#include <map>
 
 class ShoppingCart {
 private:
-    list<Item> itemsInCart;
+    map<int,Item> itemsInCart;
 public:
 
     ShoppingCart();
 
     void displayItemsInfo();
     void addItem(Item item);
-    void addMultipleItems(list<Item> toBeAdded);
-    void removeItem(string itemName);
+    void removeItem(int itemId);
     void clearShoppingCart();
     size_t numberOfItemsInCart();
     void checkoutAndPay();
