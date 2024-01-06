@@ -9,10 +9,13 @@ using namespace std;
 
 class Item {
 private:
-    string id;
+    int id;
     string name;
     float price;
     string description;
+
+    int generateRandomId();
+
 public:
 
     // Empty constructor
@@ -20,8 +23,8 @@ public:
     //Parametrized constructor
     Item(string name, float price, string description);
 
-    string getId() const;
-    void setId(string id);
+    int getId() const;
+    void setId(int id);
 
     string getName() const;
     void setName(string name);

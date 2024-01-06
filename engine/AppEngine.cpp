@@ -74,6 +74,11 @@ list<Item> loadStoreItems(){
 void AppEngine::runApp() {
     ShoppingCart shoppingCart;
     list<Item> storeItems = loadStoreItems();
+    for(Item item:storeItems){
+        cout << "-----" <<endl;
+        item.showItemInfo();
+        cout << "-----" <<endl;
+    }
     bool shopping = true;
     while(shopping){
         int option = showMenu();
