@@ -5,6 +5,7 @@
 #include "AppEngine.h"
 #include <iostream>
 #include <list>
+#include <map>
 #include "../entity/Item/Item.h"
 #include "../entity/ShoppingCart/ShoppingCart.h"
 #include "../entity/OrganicItem/OrganicItem.h"
@@ -17,11 +18,12 @@ int showMenu(){
 
     int option;
     cout << "Menu:" << endl;
-    cout << "1)Add item to cart" << endl;
-    cout << "2)Remove item to cart" << endl;
-    cout << "3)Show items" << endl;
-    cout << "4)Pay and checkout" << endl;
-    cout << "5)Exit" << endl;
+    cout << "1)Show available items" << endl;
+    cout << "2)Add item to cart" << endl;
+    cout << "3)Remove item to cart" << endl;
+    cout << "4)Show items" << endl;
+    cout << "5)Pay and checkout" << endl;
+    cout << "6)Exit" << endl;
 
     // validate input
     while (true){
@@ -71,40 +73,56 @@ list<Item> loadStoreItems(){
     return storeItems;
 }
 
-void AppEngine::runApp() {
-    ShoppingCart shoppingCart;
-    list<Item> storeItems = loadStoreItems();
+map<int, Item> generateAvailableItemsMap(list<Item> availableItem){
+     map<int, Item> itemsMap;
+     for(Item item: availableItem){
+         itemsMap.insert(pair(item.getId(), item));
+     }
+    return itemsMap;
+}
+
+void displayAvailableItems(list<Item> storeItems){
     for(Item item:storeItems){
         cout << "-----" <<endl;
         item.showItemInfo();
         cout << "-----" <<endl;
     }
+}
+
+void AppEngine::runApp() {
+    ShoppingCart shoppingCart;
+    list<Item> storeItems = loadStoreItems();
+    map<int, Item> items = generateAvailableItemsMap(storeItems);
     bool shopping = true;
     while(shopping){
         int option = showMenu();
         switch(option) {
             case 1:
+                // Show items
+                displayAvailableItems(storeItems);
+            case 2:
                 // Add item
                 break;
-            case 2:
+            case 3:
                 // Remove item
                 break;
-            case 3:
+            case 4:
                 //Show items
                 shoppingCart.displayItemsInfo();
                 break;
-            case 4:
+            case 5:
                 //Pay and checkout
                 shoppingCart.checkoutAndPay();
                 shopping = false;
                 break;
-            case 5:
+            case 6:
                 shopping = false;
                 break;
             default:
-                cout << "An error occurred, start again, please";
+                cout << "Not a valid option" <<endl;
                 break;
         }
     }
+    cout << "Good bye! We hope to see you again! :D" << endl;
 }
 
